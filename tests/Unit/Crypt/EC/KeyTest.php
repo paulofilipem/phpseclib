@@ -379,7 +379,7 @@ Private-MAC: 8a06821a1c8b8b40fc40f876e543c4ea3fb81bb9
         $this->assertSame('Ed25519', $key->getCurve());
         $this->assertSame($expected, $key->toString('libsodium'));
 
-        $key = PublicKeyLoader::load($expected = sodium_crypto_sign_publickey($kp));
+        $key = EC::loadFormat('libsodium', $expected = sodium_crypto_sign_publickey($kp));
         $this->assertSame('Ed25519', $key->getCurve());
         $this->assertSame($expected, $key->toString('libsodium'));
     }
